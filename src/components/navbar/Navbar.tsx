@@ -1,8 +1,37 @@
+import Container from "../ui/Container";
+import Logo from "../ui/Logo";
+import Cart from "./Cart";
+import MobileNavbar from "./MobileNavbar";
+import NavAuth from "./NavAuth";
+import NavItems from "./NavItems";
+
 const Navbar = () => {
   return (
-    <div>
-      <h1>This is Navbar component</h1>
-    </div>
+    <Container>
+      {/* for large screen */}
+      <div className="hidden items-center justify-between gap-4 py-8 lg:flex">
+        {/* logo */}
+        <Logo />
+
+        <div className="flex items-center gap-12">
+          {/* nav items */}
+          <NavItems />
+
+          <div className="flex items-center gap-6">
+            {/* shopping bag */}
+            <Cart />
+
+            {/* auth button */}
+            <NavAuth />
+          </div>
+        </div>
+      </div>
+
+      {/* for small screen */}
+      <div className="block py-5 lg:hidden">
+        <MobileNavbar />
+      </div>
+    </Container>
   );
 };
 
