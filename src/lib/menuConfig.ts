@@ -3,11 +3,11 @@ import { APP_ROUTES } from "./constant";
 export const menuConfig = [
   {
     label: "Home",
-    path: "/",
+    path: APP_ROUTES.SERVICES,
   },
   {
     label: "Programs & services",
-    path: APP_ROUTES.SERVICES,
+    path: "/",
   },
   {
     label: "About",

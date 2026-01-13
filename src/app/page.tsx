@@ -1,65 +1,85 @@
-import Image from "next/image";
+"use client";
+
+/* eslint-disable @next/next/no-img-element */
+
+import Programs from "@/components/program/Programs";
+import Schedule from "@/components/program/Schedule";
+import { Button } from "@/components/ui/button";
+import Container from "@/components/ui/Container";
+import SvgIcon from "@/components/ui/SvgIcon";
+import { Program } from "@/types/program";
+import { useState } from "react";
 
 export default function Home() {
+  const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <div className="flex flex-1 flex-col">
+      {/* main part */}
+      <div className="bg relative flex-1">
+        <Container py>
+          <div className="h-full">
+            {/* background images */}
+            <img
+              className="absolute top-0 left-1/2 -translate-x-1/2"
+              src="/images/Star-11.png"
+              alt="start"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <img
+              className="absolute right-0 bottom-0"
+              src="/images/Star-12.png"
+              alt="start"
+            />
+
+            <div className="space-y-12">
+              <div>
+                <div className="mb-6 inline-flex items-center gap-2">
+                  <SvgIcon src="rectangle-left.svg" size={7} />
+                  <span className="text-paragraph text-body leading-[100%] font-light">
+                    Regular aftercare program
+                  </span>
+                </div>
+                <h1 className="text-heading text-title mb-2 leading-[100%] font-medium">
+                  How many weeks you like to continue?
+                </h1>
+                <p className="text-paragraph text-body leading-[100%] font-light">
+                  Based on your selection Mon, Tue, Thu, Fri, Sat
+                </p>
+              </div>
+
+              {/* programs selection */}
+              <Programs
+                selectedProgram={selectedProgram}
+                onSelect={setSelectedProgram}
+              />
+
+              {/* program schedule */}
+              {selectedProgram && <Schedule />}
+            </div>
+          </div>
+        </Container>
+      </div>
+
+      {/* bottom part */}
+      <Container className="py-6">
+        <div className="flex flex-col flex-wrap items-center justify-between gap-4 lg:flex-row">
+          {selectedProgram ? (
+            <div className="text-heading text-body leading-[100%] font-semibold uppercase">
+              <span>${selectedProgram.price}</span> for{" "}
+              <span>{selectedProgram.duration}</span> Days (1 Activity per Day)
+            </div>
+          ) : (
+            <div className="text-heading/70 text-body leading-[100%] font-semibold uppercase">
+              Please select a program
+            </div>
+          )}
+
+          <div className="flex items-baseline gap-6">
+            <Button variant="ghost">Back</Button>
+            <Button disabled>Next</Button>
+          </div>
         </div>
-      </main>
+      </Container>
     </div>
   );
 }

@@ -1,4 +1,12 @@
 @layer utilities {
+  .bg {
+    background: linear-gradient(
+      180deg,
+      rgba(93, 6, 233, 0.02) 0%,
+      rgba(28, 29, 246, 0.13) 100%
+    );
+  }
+
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

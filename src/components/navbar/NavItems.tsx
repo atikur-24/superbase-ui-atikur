@@ -21,7 +21,7 @@ const NavItems = ({ handleLinkClick }: NavItemsProps) => {
           return (
             <li
               key={menu.path}
-              className={`text-body cursor-pointer font-semibold uppercase transition-colors duration-200 ${
+              className={`text-body cursor-pointer leading-[100%] font-semibold uppercase transition-colors duration-200 ${
                 isActive ? "text-heading" : "text-paragraph hover:text-heading"
               }`}
             >
