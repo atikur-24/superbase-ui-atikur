@@ -29,12 +29,12 @@ const Programs = ({ selectedProgram, onSelect }: ProgramsProps) => {
               src={program.image}
               height={100}
               width={100}
-              alt={program.title}
+              alt={`${program.week} Weeks`}
             />
 
             <div className="space-y-2">
               <p className="text-body text-heading leading-[80%] font-medium uppercase">
-                {program.title}
+                {program.week} {program.week <= 1 ? "week" : "weeks"}
               </p>
               <div className="text-paragraph text-caption leading-[115%] font-light">
                 ${program.price} for {program.duration} days

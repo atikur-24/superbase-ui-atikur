@@ -54,7 +54,9 @@ export default function Home() {
               />
 
               {/* program schedule */}
-              {selectedProgram && <Schedule />}
+              {selectedProgram && (
+                <Schedule selectedProgram={selectedProgram} />
+              )}
             </div>
           </div>
         </Container>

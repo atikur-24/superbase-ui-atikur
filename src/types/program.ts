@@ -1,6 +1,6 @@
 export interface Program {
   id: number;
-  title: string;
+  week: number;
   duration: number;
   price: number;
   image: string;
