@@ -1,2 +1,16 @@
 @layer components {
+  /* main container */
+  .c-container {
+    @apply mx-auto w-full max-w-360 px-4 sm:px-5 md:px-7 lg:px-8 xl:px-8;
+  }
+
+  /* margin with top and bottom */
+  .section-my {
+    @apply my-12 sm:my-14 md:my-18 lg:my-22 xl:my-24;
+  }
+
+  /* padding with top and bottom */
+  .section-py {
+    @apply py-12 sm:py-14 md:py-18 lg:py-22 xl:py-24;
+  }
 }
