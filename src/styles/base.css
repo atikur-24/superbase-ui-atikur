@@ -1,0 +1,17 @@
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-primary bg-background text-foreground;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img {
+    pointer-events: none;
+  }
+}
