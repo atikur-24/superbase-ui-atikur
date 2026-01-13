@@ -41,6 +41,7 @@
   /* new colors config */
   --color-paragraph: var(--paragraph);
   --color-heading: var(--heading);
+  --color-danger: var(--danger);
 
   /* font size customize */
   --text-caption: 13px;
@@ -84,6 +85,7 @@
   /* new colors */
   --paragraph: #555555;
   --heading: #070012;
+  --danger: #ff4145;
 }
 
 .dark {

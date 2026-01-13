@@ -7,7 +7,7 @@ import NavItems from "./NavItems";
 
 const Navbar = () => {
   return (
-    <div className="shadow-[0_1px_4px_0_rgba(0,0,0,0.08)]">
+    <div className="bg-white shadow-[0_1px_4px_0_rgba(0,0,0,0.08)]">
       <Container>
         {/* for large screen */}
         <div className="hidden items-center justify-between gap-4 py-8 lg:flex">

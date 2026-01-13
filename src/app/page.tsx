@@ -1,6 +1,5 @@
-"use client";
-
 /* eslint-disable @next/next/no-img-element */
+"use client";
 
 import Programs from "@/components/program/Programs";
 import Schedule from "@/components/program/Schedule";
@@ -12,34 +11,40 @@ import { useState } from "react";
 
 export default function Home() {
   const [selectedProgram, setSelectedProgram] = useState<Program | null>(null);
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   return (
     <div className="flex flex-1 flex-col">
       {/* main part */}
-      <div className="bg relative flex-1">
-        <Container py>
+      <div className="flex-1 bg-[linear-gradient(180deg,rgba(93,6,233,0.02)_0%,rgba(28,29,246,0.13)_100%)]">
+        <Container py className="relative">
           <div className="h-full">
             {/* background images */}
             <img
-              className="absolute top-0 left-1/2 -translate-x-1/2"
+              className="absolute top-0 left-1/2 -z-10 -translate-x-1/2"
               src="/images/Star-11.png"
-              alt="start"
+              alt="Star"
             />
             <img
-              className="absolute right-0 bottom-0"
+              className="absolute right-10 bottom-32 -z-10"
               src="/images/Star-12.png"
-              alt="start"
+              alt="Star"
+            />
+            <img
+              className="absolute -bottom-4 left-16 -z-10"
+              src="/images/water-mark.png"
+              alt="Star"
             />
 
-            <div className="space-y-12">
+            <div className="z-10 space-y-10 lg:space-y-12">
               <div>
-                <div className="mb-6 inline-flex items-center gap-2">
+                <div className="mb-5 inline-flex items-center gap-2 lg:mb-6">
                   <SvgIcon src="rectangle-left.svg" size={7} />
                   <span className="text-paragraph text-body leading-[100%] font-light">
                     Regular aftercare program
                   </span>
                 </div>
-                <h1 className="text-heading text-title mb-2 leading-[100%] font-medium">
+                <h1 className="text-heading lg:text-title mb-2 text-2xl leading-[100%] font-medium">
                   How many weeks you like to continue?
                 </h1>
                 <p className="text-paragraph text-body leading-[100%] font-light">
@@ -55,7 +60,10 @@ export default function Home() {
 
               {/* program schedule */}
               {selectedProgram && (
-                <Schedule selectedProgram={selectedProgram} />
+                <Schedule
+                  selectedProgram={selectedProgram}
+                  onComplete={setIsCompleted}
+                />
               )}
             </div>
           </div>
@@ -63,7 +71,7 @@ export default function Home() {
       </div>
 
       {/* bottom part */}
-      <Container className="py-6">
+      <Container className="bg-white py-6">
         <div className="flex flex-col flex-wrap items-center justify-between gap-4 lg:flex-row">
           {selectedProgram ? (
             <div className="text-heading text-body leading-[100%] font-semibold uppercase">
@@ -78,7 +86,7 @@ export default function Home() {
 
           <div className="flex items-baseline gap-6">
             <Button variant="ghost">Back</Button>
-            <Button disabled>Next</Button>
+            <Button disabled={!isCompleted}>Next</Button>
           </div>
         </div>
       </Container>
